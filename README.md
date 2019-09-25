@@ -1,24 +1,170 @@
-# README
+# Generated Swagger JSON
+```json
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "RailsDocsDemo (params in:body)",
+    "description": "\n<p>Another API description</p>\n",
+    "version": "1.0",
+    "x-copyright": null
+  },
+  "basePath": "",
+  "consumes": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/pets": {
+      "get": {
+        "tags": [
+          "pets"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_api_v1_pets",
+        "summary": "Get all pets",
+        "parameters": [
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+        ],
+        "responses": {
+          "200": {
+            "description": "All your pets",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "post": {
+        "tags": [
+          "pets"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_api_v1_pets",
+        "summary": "Create a pet",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pet_creation_request": {
+                  "$ref": "#/definitions/Pet Creation Request"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created pet",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        },
+        "description": ""
+      }
+    },
+    "/api/v1/pets/{id}": {
+      "get": {
+        "tags": [
+          "pets"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "get_api_v1_pets_id",
+        "summary": "Get specific pet",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "number",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Specific pet",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        },
+        "description": ""
+      }
+    }
+  },
+  "definitions": {
+    "Owner": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of owner"
+        },
+        "age": {
+          "type": "string",
+          "description": "Age of owner"
+        },
+        "gender": {
+          "type": "string",
+          "description": "Gender of owner"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "Pet": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of pet"
+        },
+        "photo_url": {
+          "type": "string",
+          "description": "Photo of pet"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of pet"
+        },
+        "owner": {
+          "$ref": "#/definitions/Owner"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "status",
+        "owner"
+      ]
+    },
+    "Pet Creation Request": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "tags": [
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  ],
+  "host": "localhost:3000"
+}
+```
