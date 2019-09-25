@@ -20,6 +20,7 @@ class Api::V1::PetsController < ApplicationController
   end
 
   api :POST, "/api/v1/pets", "Create a pet"
+  param_group :pet_creation, Pet
   returns Pet, desc: "Created pet"
   # POST /api/v1/pets
   def create

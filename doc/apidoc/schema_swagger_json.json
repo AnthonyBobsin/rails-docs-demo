@@ -47,7 +47,19 @@
         "operationId": "post_api_v1_pets",
         "summary": "Create a pet",
         "parameters": [
-
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pet_creation_request": {
+                  "$ref": "#/definitions/Pet Creation Request"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -137,6 +149,15 @@
         "status",
         "owner"
       ]
+    },
+    "Pet Creation Request": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
     }
   },
   "tags": [

@@ -19,8 +19,12 @@ module Apipie
 
         ##### START OF MONKEYPATCH #####
         if param_type == "object" && true # change this to some config?
-          schema = {"$ref" => gen_referenced_block_from_params_array(param_desc.name.to_s.titleize.to_sym, param_desc.validator.params_ordered, allow_nulls) }
-          param_defs[param_desc.name.to_sym] = schema unless schema.nil?
+          # TODO: add a param option to differentiate param vs ref name
+          param_name = param_desc.name.to_sym
+          ref_name = param_desc.name.to_s.titleize.to_sym
+
+          schema = {"$ref" => gen_referenced_block_from_params_array(ref_name, param_desc.validator.params_ordered, allow_nulls) }
+          param_defs[param_name] = schema unless schema.nil?
         ##### END OF MONKEYPATCH   #####
         elsif param_type == "object" && param_desc.validator.params_ordered
           schema = json_schema_obj_from_params_array(param_desc.validator.params_ordered, allow_nulls)
