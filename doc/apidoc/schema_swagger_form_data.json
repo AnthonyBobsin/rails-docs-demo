@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "RailsDocsDemo (params in:formData)",
+    "description": "\n<p>Another API description</p>\n",
+    "version": "1.0",
+    "x-copyright": null
+  },
+  "basePath": "/api",
+  "consumes": [
+    "application/x-www-form-urlencoded",
+    "multipart/form-data"
+  ],
+  "paths": {
+    "/api/v1/pets": {
+      "get": {
+        "tags": [
+          "pets"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "get_api_v1_pets",
+        "summary": "Get all pets",
+        "parameters": [
+          {
+            "name": "pet",
+            "type": "string",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created pet",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
+            }
+          }
+        },
+        "description": ""
+      }
+    },
+    "/api/v1/pets/{id}": {
+      "get": {
+        "tags": [
+          "pets"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded",
+          "multipart/form-data"
+        ],
+        "operationId": "get_api_v1_pets_id",
+        "summary": "Get specific pet",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "number",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Specific pet",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        },
+        "description": ""
+      }
+    }
+  },
+  "definitions": {
+    "Pet": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of pet"
+        },
+        "photo_url": {
+          "type": "string",
+          "description": "Photo of pet"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of pet"
+        },
+        "owner": {
+          "type": "Owner",
+          "description": "Owner of pet"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "status",
+        "owner"
+      ]
+    }
+  },
+  "tags": [
+
+  ],
+  "host": "localhost:3000"
+}
