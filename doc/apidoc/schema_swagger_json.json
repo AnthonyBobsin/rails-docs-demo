@@ -1,15 +1,14 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "RailsDocsDemo (params in:formData)",
+    "title": "RailsDocsDemo (params in:body)",
     "description": "\n<p>Another API description</p>\n",
     "version": "1.0",
     "x-copyright": null
   },
-  "basePath": "/api",
+  "basePath": "",
   "consumes": [
-    "application/x-www-form-urlencoded",
-    "multipart/form-data"
+    "application/json"
   ],
   "paths": {
     "/api/v1/pets": {
@@ -18,26 +17,43 @@
           "pets"
         ],
         "consumes": [
-          "application/x-www-form-urlencoded",
-          "multipart/form-data"
+          "application/json"
         ],
         "operationId": "get_api_v1_pets",
         "summary": "Get all pets",
         "parameters": [
-          {
-            "name": "pet",
-            "type": "string",
-            "in": "query"
-          }
+
         ],
         "responses": {
           "200": {
-            "description": "Created pet",
+            "description": "All your pets",
             "schema": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Pet"
               }
+            }
+          }
+        },
+        "description": ""
+      },
+      "post": {
+        "tags": [
+          "pets"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "operationId": "post_api_v1_pets",
+        "summary": "Create a pet",
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Created pet",
+            "schema": {
+              "$ref": "#/definitions/Pet"
             }
           }
         },
@@ -50,8 +66,7 @@
           "pets"
         ],
         "consumes": [
-          "application/x-www-form-urlencoded",
-          "multipart/form-data"
+          "application/json"
         ],
         "operationId": "get_api_v1_pets_id",
         "summary": "Get specific pet",
@@ -76,6 +91,27 @@
     }
   },
   "definitions": {
+    "Owner": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of owner"
+        },
+        "age": {
+          "type": "string",
+          "description": "Age of owner"
+        },
+        "gender": {
+          "type": "string",
+          "description": "Gender of owner"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
     "Pet": {
       "type": "object",
       "properties": {
@@ -92,8 +128,7 @@
           "description": "Status of pet"
         },
         "owner": {
-          "type": "Owner",
-          "description": "Owner of pet"
+          "$ref": "#/definitions/Owner"
         }
       },
       "additionalProperties": false,

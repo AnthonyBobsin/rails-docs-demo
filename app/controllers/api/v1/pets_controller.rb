@@ -1,6 +1,8 @@
 class Api::V1::PetsController < ApplicationController
   before_action :set_pet, only: [:show, :update, :destroy]
 
+  # Pet.inject_param_group(self)
+
   api :GET, "/api/v1/pets", "Get all pets"
   returns array_of: Pet, desc: "All your pets"
   # GET /api/v1/pets
@@ -17,9 +19,8 @@ class Api::V1::PetsController < ApplicationController
     render json: @pet
   end
 
-  api :GET, "/api/v1/pets", "Get all pets"
-  param :pet, Pet
-  returns array_of: Pet, desc: "Created pet"
+  api :POST, "/api/v1/pets", "Create a pet"
+  returns Pet, desc: "Created pet"
   # POST /api/v1/pets
   def create
     @pet = Pet.new(pet_params)
